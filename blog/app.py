@@ -27,7 +27,6 @@ def register_blueprints(app: Flask):
 
 app = Flask(__name__)
 cfg_name = os.environ.get("CONFIG_NAME") or "ProductionConfig"
-API_URL = os.environ.get("API_URL")
 app.config.from_object(f"blog.configs.{cfg_name}")
 migrate = Migrate(app, db, compare_type=True)
 init_extensions(app)

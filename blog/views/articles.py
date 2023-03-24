@@ -10,7 +10,6 @@ from blog.models import Author, Article, Tag
 from blog.forms.article import CreateArticleForm
 import requests
 import json
-from blog.configs import API_URL
 
 articles_app = Blueprint("articles_app", __name__)
 
@@ -78,7 +77,8 @@ def articles_by_tag(tag_name):
 
 @articles_app.route("/from-api/", endpoint="articles-from-api")
 def articles_from_api():
-    data = requests.get(f'{API_URL}/api/articles/')
+    api_url = os.environ.get("API_URL")
+    data = requests.get(f'{api_url}/api/articles/')
     data_dict = json.loads(data.text)
     articles = []
     for article in data_dict["data"]:

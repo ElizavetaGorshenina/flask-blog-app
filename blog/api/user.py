@@ -18,6 +18,6 @@ class UserDetail(ResourceDetail):
     data_layer = {
         "session": db.session,
         "model": User,
-        # "permission_get": [UserPermission],
+        "permission_get": [UserPermission],
         "permission_patch": [UserPermission],
     }

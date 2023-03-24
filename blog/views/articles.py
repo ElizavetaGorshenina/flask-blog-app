@@ -10,6 +10,7 @@ from blog.models import Author, Article, Tag
 from blog.forms.article import CreateArticleForm
 import requests
 import json
+import os
 
 articles_app = Blueprint("articles_app", __name__)
 

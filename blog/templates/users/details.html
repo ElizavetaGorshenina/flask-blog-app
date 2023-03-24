@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+User #{{ user.id }}
+{% endblock %}
+
+{% block body %}
+<h1>{{ user.username }}</h1>
+{% if user.is_staff %}
+<span class="badge bg-secondary">staff</span>
+{% endif %}
+{% for article in user.author.articles %}
+    <li>
+        <a href="{{ url_for('articles_app.details', article_id=article.id) }}">
+            {{ article.title }}
+        </a>
+    </li>
+{% endfor %}
+<div>
+    <br>
+    <a href="{{ url_for('users_app.list') }}">Back to users list</a>
+</div>
+{% endblock %}

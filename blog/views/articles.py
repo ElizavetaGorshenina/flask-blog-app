@@ -32,13 +32,13 @@ def create_article():
         db.session.add(article)
         if current_user.author:
             # use existing author if present
-            article.author = current_user.author
+            article.author_id = current_user.author.id
         else:
             # otherwise create author record
             author = Author(user_id=current_user.id)
             db.session.add(author)
             db.session.flush()
-            article.author = current_user.author
+            article.author_id = author.id
         if form.tags.data:
             selected_tags = Tag.query.filter(Tag.id.in_(form.tags.data))
             for tag in selected_tags:

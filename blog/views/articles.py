@@ -80,10 +80,10 @@ def articles_by_tag(tag_name):
 def articles_from_api():
     api_url = os.environ.get("API_URL")
     data = requests.get(f'{api_url}/api/articles/')
-    data_dict = "Nothing"
+    data_dict = "None"
     if data:
         data_dict = json.loads(data.text)
-    # articles = []
-    # for article in data_dict["data"]:
-    #     articles.append(article["attributes"]["title"])
-    return render_template("articles/list_from_api.html", data_dict=data_dict)
+        articles = []
+        for article in data_dict["data"]:
+            articles.append(article["attributes"]["title"])
+    return render_template("articles/list_from_api.html", articles=articles)

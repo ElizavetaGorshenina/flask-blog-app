@@ -79,9 +79,9 @@ def articles_by_tag(tag_name):
 @articles_app.route("/from-api/", methods=["GET"], endpoint="articles-from-api")
 def articles_from_api():
     api_url = os.environ.get("API_URL")
-    data_dict = requests.get(f'{api_url}/api/articles/').json()
+    # data_dict = requests.get(f'{api_url}/api/articles/').json()
     # data_dict = json.loads(data.text)
     # articles = []
     # for article in data_dict["data"]:
     #     articles.append(article["attributes"]["title"])
-    return render_template("articles/list_from_api.html", data_dict=data_dict)
+    return render_template("articles/list_from_api.html", api_url=api_url)

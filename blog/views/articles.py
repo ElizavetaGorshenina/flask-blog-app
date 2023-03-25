@@ -76,7 +76,7 @@ def articles_by_tag(tag_name):
     return render_template("articles/list.html", articles=target_articles)
 
 
-@articles_app.route("/from-api/", endpoint="articles-from-api")
+@articles_app.route("/from-api/", methods=["GET"], endpoint="articles-from-api")
 def articles_from_api():
     api_url = os.environ.get("API_URL")
     data = requests.get(f'{api_url}/api/articles/')

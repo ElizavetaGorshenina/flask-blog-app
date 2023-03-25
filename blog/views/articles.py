@@ -79,7 +79,7 @@ def articles_by_tag(tag_name):
 @articles_app.route("/from-api/", methods=["GET"], endpoint="articles-from-api")
 def articles_from_api():
     api_url = os.environ.get("API_URL")
-    data_dict = requests.get(f'{api_url}/api/articles/', timeout=5).json()
+    data_dict = requests.get(f'{api_url}/api/articles/', verify=False).json()
     # data_dict = json.loads(data.text)
     # articles = []
     # for article in data_dict["data"]:
